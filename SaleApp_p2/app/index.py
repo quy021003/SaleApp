@@ -1,9 +1,11 @@
-from flask import Flask, render_template,request
+from flask import render_template,request
 #import công cụ Flask và render template
 
 import dao
 #import file dao csl
-app = Flask(__name__)
+from app import app
+
+
 #Tạo mới đối tượng Flask tham số là name
 
 @app.route("/")
