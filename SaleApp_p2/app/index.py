@@ -3,7 +3,7 @@ from flask import render_template,request
 
 import dao
 #import file dao csl
-from app import app
+from app import app,login
 
 
 #Tạo mới đối tượng Flask tham số là name
@@ -17,8 +17,11 @@ def index():
     return render_template('index.html',categories = cates,products = prods)
     #Vào thư mục templates tìm file index.html
 
-
+@login.user_loader
+def load_user(user_id):
+    return dao.get_user_id(user_id)
 
 
 if __name__ == '__main__':
+    from app import admin
     app.run(debug=True)
